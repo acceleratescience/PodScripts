@@ -6,6 +6,6 @@ mv ttyd.x86_64 /usr/local/bin/ttyd
 chmod +x /usr/local/bin/ttyd
 
 # Start web terminal
-nohup ttyd -p 19123 bash >/tmp/cli.log 2>&1 &
+nohup ttyd -p 8880 bash >/tmp/cli.log 2>&1 &
 
-echo "Command-line interface started on port 19123. Logs: /tmp/cli.log"
+echo "Command-line interface started on port 8880. Logs: /tmp/cli.log"
