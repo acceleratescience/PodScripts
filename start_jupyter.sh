@@ -1,15 +1,13 @@
 #!/bin/bash
 set -e
 
-# --- Install dependencies ---
 apt-get update -y
 apt-get install -y --no-install-recommends ca-certificates python3-pip
 rm -rf /var/lib/apt/lists/*
 
-# --- Install JupyterLab ---
-pip install --upgrade pip jupyterlab notebook
+pip install --upgrade pip 
+pip install jupyterlab notebook six
 
-# --- Start JupyterLab in /workspace/workshop ---
 cd /workspace/workshop
 nohup jupyter lab \
   --ip=0.0.0.0 \
