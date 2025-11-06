@@ -15,10 +15,10 @@ else
   exit 1
 fi
 
-curl -fsSL https://code-server.dev/install.sh | sh
+npm install -g code-server@4.90.2 --unsafe-perm
 
-/usr/bin/code-server --install-extension ms-python.python
-/usr/bin/code-server --install-extension ms-toolsai.jupyter
+/usr/local/bin/code-server --install-extension ms-python.python
+/usr/local/bin/code-server --install-extension ms-toolsai.jupyter
 
 mkdir -p ~/.local/share/code-server/User
 cat <<'EOF' > ~/.local/share/code-server/User/settings.json
@@ -28,7 +28,7 @@ cat <<'EOF' > ~/.local/share/code-server/User/settings.json
 EOF
 
 cd /workspace/workshop
-nohup /usr/bin/code-server \
+nohup /usr/local/bin/code-server \
   --bind-addr 0.0.0.0:8080 \
   --auth none \
   >/tmp/code.log 2>&1 &
