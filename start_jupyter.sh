@@ -1,9 +1,19 @@
 #!/bin/bash
 set -e
 
-apt-get update -y
-apt-get install -y --no-install-recommends ca-certificates python3-pip
-rm -rf /var/lib/apt/lists/*
+if command -v apt-get >/dev/null 2>&1; then
+  echo "Detected apt-based system (Ubuntu/Debian)."
+  apt-get update -y
+  apt-get install -y --no-install-recommends ca-certificates python3-pip
+  rm -rf /var/lib/apt/lists/*
+elif command -v apk >/dev/null 2>&1; then
+  echo "Detected apk-based system (Alpine)."
+  apk update
+  apk add --no-cache ca-certificates python3 py3-pip
+else
+  echo "Unsupported package manager. Please use Ubuntu or Alpine base image."
+  exit 1
+fi
 
 pip install --upgrade pip
 pip install --upgrade jupyterlab notebook
