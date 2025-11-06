@@ -4,12 +4,12 @@ set -e
 if command -v apt-get >/dev/null 2>&1; then
   echo "Detected apt-based system (Ubuntu/Debian)."
   apt-get update -y
-  apt-get install -y --no-install-recommends ca-certificates python3-pip
+  apt-get install -y --no-install-recommends ca-certificates python3-pip gcc python3-dev build-essential
   rm -rf /var/lib/apt/lists/*
 elif command -v apk >/dev/null 2>&1; then
   echo "Detected apk-based system (Alpine)."
   apk update
-  apk add --no-cache ca-certificates python3 py3-pip
+  apk add --no-cache ca-certificates python3 py3-pip gcc python3-dev musl-dev linux-headers
 else
   echo "Unsupported package manager. Please use Ubuntu or Alpine base image."
   exit 1
