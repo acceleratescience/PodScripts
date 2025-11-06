@@ -16,6 +16,6 @@ cd /workspace/workshop
 rm -rf .github docs overrides .devcontainer .dockerignore .pre-commit-config.yaml mkdocs.yml
 echo "Removed extra files."
 
-pip install --upgrade pip
-pip install uv
+pip install --upgrade pip --break-system-packages
+pip install uv --break-system-packages
 uv sync
