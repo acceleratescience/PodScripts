@@ -15,9 +15,9 @@ else
   exit 1
 fi
 
-pip install --upgrade pip
-pip install --upgrade jupyterlab notebook
-pip install --force-reinstall --upgrade six
+pip install --upgrade pip --break-system-packages
+pip install --upgrade jupyterlab notebook --break-system-packages
+pip install --force-reinstall --upgrade six --break-system-packages
 
 cd /workspace/workshop
 nohup jupyter lab \
