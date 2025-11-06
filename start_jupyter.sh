@@ -5,8 +5,9 @@ apt-get update -y
 apt-get install -y --no-install-recommends ca-certificates python3-pip
 rm -rf /var/lib/apt/lists/*
 
-pip install --upgrade pip 
-pip install jupyterlab notebook six
+pip install --upgrade pip
+pip install --upgrade jupyterlab notebook
+pip install --force-reinstall --upgrade six
 
 cd /workspace/workshop
 nohup jupyter lab \
