@@ -1,0 +1,11 @@
+apt-get update -y
+apt-get install -y --no-install-recommends wget ca-certificates
+
+wget https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64
+mv ttyd.x86_64 /usr/local/bin/ttyd
+chmod +x /usr/local/bin/ttyd
+
+# Start web terminal
+nohup ttyd -p 19123 bash >/tmp/cli.log 2>&1 &
+
+echo "Command-line interface started on port 19123. Logs: /tmp/cli.log"
