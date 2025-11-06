@@ -24,9 +24,11 @@ ARCH=$(uname -m)
 
 if [ "$INSTALL_METHOD" = "binary" ]; then
   echo "Installing prebuilt code-server binary..."
-  curl -fsSL "https://github.com/coder/code-server/releases/download/v${CODE_VER}/code-server-${CODE_VER}-linux-${ARCH}.tar.gz" \
-    | tar -xz -C /usr/local --strip-components=1 --wildcards "*/bin/*"
+  curl -fsSL "https://github.com/coder/code-server/releases/download/v${CODE_VER}/code-server-${CODE_VER}-linux-${ARCH}.tar.gz" -o /tmp/code-server.tar.gz
+  tar -xzf /tmp/code-server.tar.gz -C /tmp
+  cp /tmp/code-server-${CODE_VER}-linux-${ARCH}/bin/code-server /usr/local/bin/code-server
   chmod +x /usr/local/bin/code-server
+  rm -rf /tmp/code-server*
 fi
 
 /usr/local/bin/code-server --install-extension ms-python.python || true
