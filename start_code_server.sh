@@ -4,12 +4,14 @@ set -e
 if command -v apt-get >/dev/null 2>&1; then
   echo "Detected apt-based system (Ubuntu/Debian)."
   apt-get update -y
-  apt-get install -y --no-install-recommends curl ca-certificates nodejs npm
+  apt-get install -y --no-install-recommends \
+    curl ca-certificates nodejs npm python3 build-essential
   rm -rf /var/lib/apt/lists/*
 elif command -v apk >/dev/null 2>&1; then
   echo "Detected apk-based system (Alpine)."
   apk update
-  apk add --no-cache curl ca-certificates nodejs npm
+  apk add --no-cache \
+    curl ca-certificates nodejs npm python3 make g++ gcc libstdc++ libc-dev linux-headers
 else
   echo "Unsupported package manager."
   exit 1
