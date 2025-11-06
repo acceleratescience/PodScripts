@@ -3,7 +3,7 @@ set -e
 
 apt-get update -y
 apt-get install -y --no-install-recommends \
-    git build-essential cmake pkg-config libjson-c-dev libwebsockets-dev ca-certificates
+    git build-essential cmake libjson-c-dev libwebsockets-dev ca-certificates
 rm -rf /var/lib/apt/lists/*
 
 git clone https://github.com/tsl0922/ttyd.git /tmp/ttyd-src
