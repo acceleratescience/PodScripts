@@ -4,7 +4,9 @@ set -e
 if command -v apt-get >/dev/null 2>&1; then
   echo "Detected apt-based system (Ubuntu/Debian)."
   apt-get update -y
-  apt-get install -y --no-install-recommends curl ca-certificates nodejs
+  apt-get install -y --no-install-recommends curl ca-certificates gnupg
+  curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+  apt-get install -y --no-install-recommends nodejs
   rm -rf /var/lib/apt/lists/*
   INSTALL_METHOD="binary"
 elif command -v apk >/dev/null 2>&1; then
