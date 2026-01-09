@@ -4,13 +4,13 @@ set -e
 if command -v apt-get >/dev/null 2>&1; then
   echo "Detected apt-based system (Ubuntu/Debian)."
   apt-get update -y
-  apt-get install -y --no-install-recommends curl ca-certificates
+  apt-get install -y --no-install-recommends curl ca-certificates nodejs
   rm -rf /var/lib/apt/lists/*
   INSTALL_METHOD="binary"
 elif command -v apk >/dev/null 2>&1; then
   echo "Detected apk-based system (Alpine)."
   apk update
-  apk add --no-cache curl ca-certificates
+  apk add --no-cache curl ca-certificates nodejs
   INSTALL_METHOD="binary"
 else
   echo "Unsupported package manager. Please use Ubuntu or Alpine base image."
