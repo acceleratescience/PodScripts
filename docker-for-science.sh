@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-apk update
-apk add --no-cache bash git python3 py3-pip ca-certificates jq
+apt-get update -y
+apt-get install -y --no-install-recommends bash git python3-pip ca-certificates jq
+rm -rf /var/lib/apt/lists/*
 
 if [ -d /workspace/workshop/.git ]; then
   echo "Repository already exists at /workspace/workshop — skipping clone."
