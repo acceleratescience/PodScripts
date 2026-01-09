@@ -7,12 +7,8 @@ if command -v apt-get >/dev/null 2>&1; then
   apt-get install -y --no-install-recommends curl ca-certificates gnupg
   curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
   apt-get install -y --no-install-recommends nodejs
+  node -v
   rm -rf /var/lib/apt/lists/*
-  INSTALL_METHOD="binary"
-elif command -v apk >/dev/null 2>&1; then
-  echo "Detected apk-based system (Alpine)."
-  apk update
-  apk add --no-cache curl ca-certificates nodejs
   INSTALL_METHOD="binary"
 else
   echo "Unsupported package manager. Please use Ubuntu or Alpine base image."
