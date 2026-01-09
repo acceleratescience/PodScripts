@@ -7,6 +7,7 @@ if command -v apt-get >/dev/null 2>&1; then
   apt-get install -y --no-install-recommends curl ca-certificates gnupg
   curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
   apt-get install -y --no-install-recommends nodejs
+  ln -sf /usr/bin/node /usr/local/lib/node
   node -v
   rm -rf /var/lib/apt/lists/*
   INSTALL_METHOD="binary"
